@@ -11,6 +11,18 @@
 <body>
 
 <p th:text="${testName}"></p>
+<table>
+    <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total cases reported</th>
+    </tr>
+    <tr th:each="locationState : ${locationStates}">
+        <td th:text="${locationState.state}">Onions</td>
+        <td th:text="${locationState.country}">2.41</td>
+        <td th:text="${locationState.latestTotalCases}">0</td>
+    </tr>
+</table>
 
 </body>
 

@@ -20,11 +20,16 @@ import java.util.List;
 public class CoronaVirusDataService {
     private static String VIRUS_DATA_URL="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
-    private List<LocationStates> allState = new ArrayList<>();
+    private static List<LocationStates> allStates = new ArrayList<>();
+
+    public static List<LocationStates> getAllStates() {
+        return allStates;
+    }
+
     @PostConstruct
     @Scheduled(cron = "* * * * * *")
     public void fetchVirusData() throws IOException, InterruptedException {
-        List<LocationStates> newState = new ArrayList<>();
+        List<LocationStates> newStates = new ArrayList<>();
         HttpClient client= HttpClient.newHttpClient();
         HttpRequest request= HttpRequest.newBuilder()
                 .uri(URI.create(VIRUS_DATA_URL))
@@ -40,10 +45,10 @@ public class CoronaVirusDataService {
             locationStates.setState(record.get("Country/Region"));
             locationStates.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));
             System.out.println(locationStates);
-            newState.add(locationStates);
+            newStates.add(locationStates);
         }
 
-        this.allState = newState;
+        this.allStates = newStates;
 
     }
 }
