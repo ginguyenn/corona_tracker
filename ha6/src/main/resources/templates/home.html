@@ -4,8 +4,10 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Corona Virus Tracker Apllication</title>
+    <h1>Coronavirus Tracker Application</h1>
+    <p>This application lists the current number of cases reported across the globe</p>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,8 +20,8 @@
         <th>Total cases reported</th>
     </tr>
     <tr th:each="locationState : ${locationStates}">
-        <td th:text="${locationState.state}">Onions</td>
-        <td th:text="${locationState.country}">2.41</td>
+        <td th:text="${locationState.state}"></td>
+        <td th:text="${locationState.country}"></td>
         <td th:text="${locationState.latestTotalCases}">0</td>
     </tr>
 </table>
