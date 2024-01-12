@@ -1,10 +1,19 @@
-package ha6.models;
+package io.javabrains.coronavirustracker.models;
 
-public class LocationStates {
+public class LocationStats {
 
     private String state;
     private String country;
     private int latestTotalCases;
+    private int diffFromPrevDay;
+
+    public int getDiffFromPrevDay() {
+        return diffFromPrevDay;
+    }
+
+    public void setDiffFromPrevDay(int diffFromPrevDay) {
+        this.diffFromPrevDay = diffFromPrevDay;
+    }
 
     public String getState() {
         return state;
@@ -32,7 +41,7 @@ public class LocationStates {
 
     @Override
     public String toString() {
-        return "LocationStates{" +
+        return "LocationStats{" +
                 "state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", latestTotalCases=" + latestTotalCases +
